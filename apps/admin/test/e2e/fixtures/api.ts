@@ -1,0 +1,169 @@
+import type { Page } from '@playwright/test';
+
+import type { AdminMeResponseDto } from '@open-meet/types';
+
+import * as fixtures from './data';
+
+function ok<T>(data: T) {
+  return { success: true, data, meta: { timestamp: new Date().toISOString() } };
+}
+
+function err(code: string, message: string, statusCode: number) {
+  return { success: false, error: { code, message, statusCode } };
+}
+
+export interface AdminApiMockOptions {
+  me?: AdminMeResponseDto | null;
+  overview?: typeof fixtures.overview;
+  users?: typeof fixtures.usersList;
+  meetings?: typeof fixtures.meetingsList;
+  analyticsDeep?: typeof fixtures.deepAnalytics;
+  accounts?: typeof fixtures.accounts;
+  invites?: typeof fixtures.invites;
+  branding?: typeof fixtures.branding;
+  configuration?: typeof fixtures.configuration;
+  inviteLookup?: typeof fixtures.inviteLookup | { errorStatus: number };
+  groups?: typeof fixtures.groupsList;
+  groupDetail?: typeof fixtures.groupDetail;
+  userInvites?: typeof fixtures.userInvites;
+  adminRoles?: typeof fixtures.adminRoles;
+  permissionCatalog?: typeof fixtures.permissionCatalog;
+  authenticateOnLogin?: boolean;
+}
+
+export async function mockAdminApi(page: Page, options: AdminApiMockOptions = {}): Promise<void> {
+  let me = options.me === undefined ? fixtures.currentAdminMe : options.me;
+  const overview = options.overview ?? fixtures.overview;
+  const users = options.users ?? fixtures.usersList;
+  const meetings = options.meetings ?? fixtures.meetingsList;
+  const analyticsDeep = options.analyticsDeep ?? fixtures.deepAnalytics;
+  const accounts = options.accounts ?? fixtures.accounts;
+  const invites = options.invites ?? fixtures.invites;
+  const branding = options.branding ?? fixtures.branding;
+  const configuration = options.configuration ?? fixtures.configuration;
+  const inviteLookup = options.inviteLookup ?? fixtures.inviteLookup;
+  const groups = options.groups ?? fixtures.groupsList;
+  const groupDetail = options.groupDetail ?? fixtures.groupDetail;
+  const userInvites = options.userInvites ?? fixtures.userInvites;
+  const adminRoles = options.adminRoles ?? fixtures.adminRoles;
+  const permissionCatalog = options.permissionCatalog ?? fixtures.permissionCatalog;
+
+  await page.route('**/api/**', async (route) => {
+    const request = route.request();
+    const method = request.method();
+    const path = new URL(request.url()).pathname.replace(/^\/api/, '');
+
+    const json = (status: number, body: unknown) =>
+      route.fulfill({
+        status,
+        contentType: 'application/json',
+        body: JSON.stringify(body),
+      });
+
+    if (path === '/admin/auth/me' && method === 'GET') {
+      return me
+        ? json(200, ok(me))
+        : json(401, err('UNAUTHORIZED', 'Authentication required', 401));
+    }
+
+    if (path === '/admin/auth/login' && method === 'POST') {
+      if (options.authenticateOnLogin) {
+        me = fixtures.currentAdminMe;
+      }
+
+      return json(200, ok(fixtures.loginResponse));
+    }
+
+    if (path === '/admin/auth/logout' && method === 'POST') {
+      return json(200, ok({ loggedOut: true }));
+    }
+
+    if (path.startsWith('/admin/invite/') && method === 'GET') {
+      if ('errorStatus' in inviteLookup) {
+        return json(
+          inviteLookup.errorStatus,
+          err('INVITE_NOT_FOUND', 'Invite not found', inviteLookup.errorStatus),
+        );
+      }
+
+      return json(200, ok(inviteLookup));
+    }
+
+    if (method === 'GET') {
+      switch (path) {
+        case '/admin/analytics/overview':
+          return json(200, ok(overview));
+        case '/admin/analytics/deep':
+          return json(200, ok(analyticsDeep));
+        case '/admin/users':
+          return json(200, ok(users));
+        case '/admin/users/datagrid':
+          return json(200, ok(fixtures.usersDatagrid(users.items)));
+        case '/admin/users/invites':
+          return json(200, ok(userInvites));
+        case '/admin/meetings/datagrid':
+          return json(200, ok(fixtures.meetingsDatagrid(meetings.items)));
+        case '/admin/accounts/datagrid':
+          return json(200, ok(fixtures.accountsDatagrid(accounts.items)));
+        case '/admin/accounts/invites':
+          return json(200, ok(invites));
+        case '/admin/branding':
+          return json(200, ok(branding));
+        case '/admin/configuration':
+          return json(200, ok(configuration));
+        case '/admin/groups/datagrid':
+          return json(200, ok(fixtures.groupsDatagrid(groups.items)));
+        case '/admin/roles':
+          return json(200, ok(adminRoles));
+        case '/admin/roles/datagrid':
+          return json(200, ok(fixtures.rolesDatagrid(adminRoles.items)));
+        case '/admin/permissions/catalog':
+          return json(200, ok(permissionCatalog));
+        default:
+          break;
+      }
+
+      const roleMatch = /^\/admin\/roles\/([^/]+)$/.exec(path);
+
+      if (roleMatch) {
+        const found = adminRoles.items.find((r) => r.id === roleMatch[1]);
+
+        return found
+          ? json(200, ok(found))
+          : json(404, err('ROLE_NOT_FOUND', 'Role not found', 404));
+      }
+
+      if (/^\/admin\/meetings\/[^/]+$/.test(path)) {
+        return json(200, ok(fixtures.meetingDetail));
+      }
+
+      if (/^\/admin\/groups\/[^/]+$/.test(path)) {
+        return json(200, ok(groupDetail));
+      }
+
+      const userMatch = /^\/admin\/users\/([^/]+)$/.exec(path);
+
+      if (userMatch) {
+        const found = users.items.find((u) => u.id === userMatch[1]) ?? users.items[0];
+
+        return found ? json(200, ok(found)) : json(404, err('NOT_FOUND', 'User not found', 404));
+      }
+    }
+
+    if (method === 'POST') {
+      if (path === '/admin/groups') {
+        return json(200, ok(groupDetail));
+      }
+
+      if (path === '/admin/users/invite') {
+        return json(200, ok(fixtures.userInvites.items[0]));
+      }
+
+      if (path === '/admin/users') {
+        return json(200, ok(users.items[0]));
+      }
+    }
+
+    return json(200, ok({ ok: true }));
+  });
+}

@@ -1,0 +1,38 @@
+{
+  "name": "@open-meet/types",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./api": {
+      "types": "./dist/api.d.ts",
+      "default": "./dist/api.js"
+    },
+    "./dto": {
+      "types": "./dist/dto/index.d.ts",
+      "default": "./dist/dto/index.js"
+    },
+    "./socket": {
+      "types": "./dist/socket.d.ts",
+      "default": "./dist/socket.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "clean": "rimraf dist .turbo *.tsbuildinfo"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1",
+    "typescript": "^6.0.3",
+    "vitest": "^2.1.8"
+  }
+}

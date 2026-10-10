@@ -1,0 +1,95 @@
+@import '@open-meet/tailwind-config/styles.css';
+
+@source '../../../packages/ui/src/**/*.{ts,tsx}';
+
+html:not(.dark) [data-lk-theme='default'] {
+  color-scheme: light;
+  --lk-bg: #f6f7fb;
+  --lk-bg2: #fcfcfd;
+  --lk-bg3: #eef1f6;
+  --lk-bg4: #d9dee8;
+  --lk-bg5: #c8cfdb;
+  --lk-fg: #111827;
+  --lk-fg2: #1f2937;
+  --lk-fg3: #374151;
+  --lk-fg4: #4b5563;
+  --lk-fg5: #5f6673;
+  --lk-border-color: rgba(0, 0, 0, 0.08);
+  --lk-accent-fg: #ffffff;
+  --lk-accent-bg: #3b82f6;
+  --lk-accent2: #2563eb;
+  --lk-accent3: #1d4ed8;
+  --lk-accent4: #1e40af;
+  --lk-danger-fg: #ffffff;
+  --lk-danger: #ef4444;
+  --lk-danger2: #dc2626;
+  --lk-danger3: #b91c1c;
+  --lk-danger4: #991b1b;
+  --lk-success-fg: #ffffff;
+  --lk-success: #10b981;
+  --lk-success2: #059669;
+  --lk-success3: #047857;
+  --lk-success4: #065f46;
+  --lk-control-fg: var(--lk-fg);
+  --lk-control-bg: var(--lk-bg2);
+  --lk-control-hover-bg: var(--lk-bg3);
+  --lk-control-active-bg: var(--lk-bg4);
+  --lk-control-active-hover-bg: var(--lk-bg5);
+  --lk-box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+  --lk-drop-shadow: rgba(0, 0, 0, 0.18) 0px 0px 24px;
+}
+
+[data-lk-theme='default'] .lk-participant-metadata {
+  right: 0.625rem;
+  bottom: 0.625rem;
+  left: 0.625rem;
+  gap: 0.375rem;
+}
+
+[data-lk-theme='default'] .lk-participant-metadata-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.3125rem 0.625rem;
+  border-radius: 9999px;
+  background-color: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+[data-lk-theme='default'] .lk-participant-metadata-item * {
+  color: inherit;
+}
+
+[data-lk-theme='default'] .lk-participant-tile .lk-focus-toggle-button {
+  top: 0.625rem;
+  right: 0.625rem;
+  padding: 0.375rem;
+  border-radius: 9999px;
+  background-color: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+}
+
+[data-lk-theme='default'] .lk-connection-quality {
+  display: none !important;
+}
+
+html:not(.dark) [data-lk-theme='default'] .lk-participant-placeholder {
+  background-color: #18181b;
+  color: #fafafa;
+}
+
+html:fullscreen [data-hide-in-fullscreen] {
+  display: none !important;
+}
+
+html:fullscreen [data-lk-theme='default'] {
+  height: 100vh !important;
+}

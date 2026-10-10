@@ -1,0 +1,18 @@
+{
+  "email-taken": "Ein Administrator mit dieser E-Mail-Adresse existiert bereits",
+  "invite-invalid": "Dieser Einladungslink ist ungültig",
+  "invite-expired": "Diese Einladung ist abgelaufen",
+  "invite-not-found": "Einladung nicht gefunden",
+  "admin-not-found": "Administrator nicht gefunden",
+  "name-required": "Name ist erforderlich",
+  "name-empty": "Name darf nicht leer sein",
+  "cannot-demote-last-superadmin": "Der letzte verbleibende Superadmin kann nicht herabgestuft werden",
+  "cannot-delete-self": "Sie können Ihr eigenes Admin-Konto nicht löschen",
+  "cannot-delete-last-superadmin": "Der letzte verbleibende Superadmin kann nicht gelöscht werden",
+  "permission-required": "Sie haben keine Berechtigung, diese Aktion auszuführen",
+  "role-not-found": "Rolle nicht gefunden",
+  "role-name-taken": "Eine Rolle mit diesem Namen existiert bereits",
+  "role-is-system": "Systemrollen können nicht geändert oder gelöscht werden",
+  "role-has-members": "Weisen Sie jeden Administrator dieser Rolle neu zu, bevor Sie sie löschen",
+  "role-permission-invalid": "Ein oder mehrere Berechtigungsschlüssel sind ungültig"
+}

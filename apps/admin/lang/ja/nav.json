@@ -1,0 +1,34 @@
+{
+  "brand": {
+    "console": "管理コンソール",
+    "visit-open-meet": "Open Meet を開く"
+  },
+  "sections": {
+    "overview": "概要",
+    "manage": "管理",
+    "system": "システム"
+  },
+  "items": {
+    "dashboard": "ダッシュボード",
+    "analytics": "アナリティクス",
+    "users": "ユーザー",
+    "groups": "グループ",
+    "meetings": "ミーティング",
+    "settings": "設定",
+    "administrators": "管理者",
+    "roles": "管理者ロール",
+    "user-roles": "ユーザーロール",
+    "branding": "ブランディング",
+    "configuration": "構成",
+    "more": "その他"
+  },
+  "topbar": {
+    "root": "管理",
+    "dashboard": "ダッシュボード",
+    "open-sidebar": "ナビゲーションを開く",
+    "hide-sidebar": "ナビゲーションを非表示",
+    "show-sidebar": "ナビゲーションを表示",
+    "my-account": "マイプロフィール",
+    "sign-out": "サインアウト"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "menu": {
+    "profile": "الملف الشخصي",
+    "profile-description": "تعديل تفاصيل حسابك",
+    "settings": "الإعدادات",
+    "settings-description": "الإعدادات الافتراضية والخصوصية واللغة",
+    "sign-out": "تسجيل الخروج"
+  },
+  "user-menu-label": "فتح قائمة الحساب",
+  "chat-link-label": "فتح الدردشة",
+  "activity-link-label": "النشاط",
+  "saved-link-label": "المميّزة بنجمة",
+  "search-placeholder": "بحث",
+  "rail": {
+    "label": "أساسي",
+    "chat": "الدردشة",
+    "meet": "اجتماع",
+    "activity": "النشاط",
+    "saved": "المميّزة بنجمة",
+    "history": "السجل",
+    "show": "إظهار الشريط الجانبي",
+    "hide": "إخفاء الشريط الجانبي",
+    "backdrop": "إغلاق الشريط الجانبي"
+  },
+  "command": {
+    "placeholder": "اكتب أمرًا أو رمز اجتماع…",
+    "no-results": "لا توجد نتائج.",
+    "group-meetings": "الاجتماعات",
+    "group-appearance": "المظهر",
+    "new-meeting": "اجتماع جديد",
+    "join": "الانضمام إلى ”{code}“",
+    "switch-to-light": "التبديل إلى الوضع الفاتح",
+    "switch-to-dark": "التبديل إلى الوضع الداكن",
+    "match-system-theme": "مطابقة سمة النظام",
+    "home": "الرئيسية",
+    "sign-out": "تسجيل الخروج",
+    "create-meeting-error": "تعذّر إنشاء الاجتماع",
+    "join-code-required": "اكتب رمز الاجتماع أولًا"
+  }
+}

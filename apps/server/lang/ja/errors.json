@@ -1,0 +1,18 @@
+{
+  "email-taken": "そのメールアドレスを持つ管理者はすでに存在します",
+  "invite-invalid": "この招待リンクは無効です",
+  "invite-expired": "この招待は有効期限が切れています",
+  "invite-not-found": "招待が見つかりません",
+  "admin-not-found": "管理者が見つかりません",
+  "name-required": "名前は必須です",
+  "name-empty": "名前を空にすることはできません",
+  "cannot-demote-last-superadmin": "最後のスーパー管理者を降格させることはできません",
+  "cannot-delete-self": "自分の管理者アカウントを削除することはできません",
+  "cannot-delete-last-superadmin": "最後のスーパー管理者を削除することはできません",
+  "permission-required": "この操作を実行する権限がありません",
+  "role-not-found": "ロールが見つかりません",
+  "role-name-taken": "その名前のロールはすでに存在します",
+  "role-is-system": "システムロールは変更または削除できません",
+  "role-has-members": "削除する前に、このロールのすべての管理者を再割り当てしてください",
+  "role-permission-invalid": "1つ以上の権限キーが無効です"
+}

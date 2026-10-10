@@ -1,0 +1,71 @@
+{
+  "eyebrow": "Pengaturan",
+  "title": "Konfigurasi",
+  "description": "Default ruang kerja, merek, dan kebijakan rapat.",
+  "coming-soon-label": "Segera hadir",
+  "coming-soon": {
+    "title": "Konfigurasi sedang dalam proses",
+    "description": "Default ruang kerja, merek, dan kebijakan rapat akan segera hadir di sini."
+  },
+  "hub": {
+    "empty": "Anda belum memiliki akses ke pengaturan apa pun.",
+    "sections": {
+      "access": {
+        "title": "Akses",
+        "description": "Kelola siapa yang dapat masuk ke konsol dan apa saja yang dapat mereka lakukan."
+      },
+      "users": {
+        "title": "Pengguna",
+        "description": "Kelola pengguna akhir aplikasi dan peran yang ditetapkan untuk mereka."
+      },
+      "workspace": {
+        "title": "Ruang kerja",
+        "description": "Berikan identitas merek pada konsol dan konfigurasikan default ruang kerja."
+      }
+    },
+    "cards": {
+      "administrators": {
+        "title": "Administrator",
+        "description": "Tambahkan, edit, atau hapus akun admin yang dapat masuk ke konsol."
+      },
+      "roles": {
+        "title": "Peran admin",
+        "description": "Tentukan izin yang diberikan oleh setiap peran admin."
+      },
+      "users": {
+        "title": "Pengguna",
+        "description": "Kelola akun pengguna akhir, undang pengguna baru, dan alihkan akses mereka."
+      },
+      "user-roles": {
+        "title": "Peran pengguna",
+        "description": "Tentukan izin yang diberikan oleh setiap peran pengguna di dalam aplikasi."
+      },
+      "branding": {
+        "title": "Branding",
+        "description": "Sesuaikan nama aplikasi, logo, dan warna aksen."
+      },
+      "configuration": {
+        "title": "Konfigurasi",
+        "description": "Default ruang kerja, kebijakan rapat, dan sakelar fitur."
+      }
+    }
+  },
+  "form": {
+    "title": "Default ruang kerja",
+    "subtitle": "Default yang diterapkan ke rapat baru di seluruh ruang kerja.",
+    "default-title-label": "Judul rapat default",
+    "default-title-help": "Digunakan saat rapat dibuat tanpa nama.",
+    "title-required": "Masukkan judul rapat default.",
+    "title-too-long": "Judul harus 120 karakter atau kurang.",
+    "allow-guests-label": "Izinkan tamu bergabung",
+    "allow-guests-help": "Izinkan orang tanpa akun bergabung ke rapat melalui tautan.",
+    "max-duration-label": "Durasi rapat maksimum (menit)",
+    "max-duration-placeholder": "Tanpa batas",
+    "max-duration-help": "Kosongkan untuk tanpa batas. Antara 5 dan 1440 menit.",
+    "allow-guest-join-help": "Let people without an account join meetings via a link.",
+    "save": "Simpan perubahan",
+    "saving": "Menyimpan…",
+    "saved": "Konfigurasi disimpan",
+    "error": "Tidak dapat menyimpan konfigurasi"
+  }
+}

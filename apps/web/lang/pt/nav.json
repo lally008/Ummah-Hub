@@ -1,0 +1,40 @@
+{
+  "menu": {
+    "profile": "Perfil",
+    "profile-description": "Editar detalhes da sua conta",
+    "settings": "Configurações",
+    "settings-description": "Padrões, privacidade, idioma",
+    "sign-out": "Sair"
+  },
+  "user-menu-label": "Abrir menu da conta",
+  "chat-link-label": "Abrir chat",
+  "activity-link-label": "Atividade",
+  "saved-link-label": "Favoritas",
+  "search-placeholder": "Pesquisar",
+  "rail": {
+    "label": "Principal",
+    "chat": "Chat",
+    "meet": "Reunião",
+    "activity": "Atividade",
+    "saved": "Favoritas",
+    "history": "Histórico",
+    "show": "Mostrar barra lateral",
+    "hide": "Ocultar barra lateral",
+    "backdrop": "Fechar barra lateral"
+  },
+  "command": {
+    "placeholder": "Digite um comando ou código de reunião…",
+    "no-results": "Nenhum resultado.",
+    "group-meetings": "Reuniões",
+    "group-appearance": "Aparência",
+    "new-meeting": "Nova reunião",
+    "join": "Entrar em “{code}”",
+    "switch-to-light": "Mudar para modo claro",
+    "switch-to-dark": "Mudar para modo escuro",
+    "match-system-theme": "Seguir tema do sistema",
+    "home": "Início",
+    "sign-out": "Sair",
+    "create-meeting-error": "Não foi possível criar a reunião",
+    "join-code-required": "Digite um código de reunião primeiro"
+  }
+}

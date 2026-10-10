@@ -1,0 +1,58 @@
+{
+  "eyebrow": "Settings",
+  "title": "Branding",
+  "description": "Customize how your workspace looks across the apps.",
+  "name": {
+    "title": "Application name",
+    "description": "Shown in the header, sign-in screens, and the browser tab.",
+    "label": "Name",
+    "placeholder": "e.g. Acme Meet"
+  },
+  "logo": {
+    "title": "Logo",
+    "description": "Displayed beside the app name. PNG, JPEG, WebP, or GIF.",
+    "alt": "Application logo",
+    "upload": "Upload logo",
+    "replace": "Replace logo",
+    "remove": "Remove",
+    "hint": "Recommended: a square image, at least 64×64px, up to 2MB."
+  },
+  "accent": {
+    "title": "Brand accent",
+    "description": "Color used for buttons, links, and focus rings across the apps.",
+    "advanced": "Use a custom color",
+    "hex-picker": "Custom color picker",
+    "hex-input": "Hex color value",
+    "apply-hex": "Apply",
+    "preset": {
+      "indigo": "Indigo",
+      "blue": "Blue",
+      "green": "Green",
+      "purple": "Purple",
+      "rose": "Rose",
+      "amber": "Amber",
+      "teal": "Teal"
+    }
+  },
+  "groups": {
+    "title": "User-created groups",
+    "description": "Let colleagues start their own group chats from the conversation list.",
+    "label": "Allow users to create groups",
+    "hint": "When off, only admins can create groups."
+  },
+  "form": {
+    "name-required": "Enter an application name.",
+    "name-too-long": "Name must be 60 characters or fewer.",
+    "name-saved": "Application name updated",
+    "logo-saved": "Logo updated",
+    "logo-removed": "Logo removed",
+    "logo-invalid-type": "Logo must be a PNG, JPEG, WebP, or GIF image.",
+    "logo-too-large": "Logo must be 2MB or smaller.",
+    "accent-saved": "Accent color updated",
+    "groups-saved": "Group settings updated",
+    "save": "Save",
+    "saving": "Saving…",
+    "uploading": "Uploading…",
+    "error": "Something went wrong"
+  }
+}

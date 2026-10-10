@@ -1,0 +1,91 @@
+model User {
+  id              String        @id @default(cuid())
+  name            String
+  email           String        @unique
+  passwordHash    String?
+  googleId        String?       @unique
+  avatarKey       String?
+  avatarUrl       String?
+  timezone        String        @default("UTC")
+  language        String        @default("en")
+  bio             String?
+  chatDisabled    Boolean       @default(false)
+  canCreateGroups Boolean       @default(true)
+  emailVerifiedAt DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  settings        UserSettings?
+  meetings        Participant[]
+  messages        Message[]
+  hostedMeetings  Meeting[]     @relation("host")
+
+  conversationMemberships ConversationMember[]
+  conversationsCreated    Conversation[]       @relation("ConversationCreatedByUser")
+  conversationsOwned      Conversation[]       @relation("ConversationOwnedByUser")
+  chatMessages            ChatMessage[]
+  messageReactions        MessageReaction[]
+  messageMentions         MessageMention[]
+  pinnedMessages          PinnedMessage[]
+  savedMessages           SavedMessage[]
+  presence                UserPresence?
+  pollVotes               PollVote[]
+  pushSubscriptions       PushSubscription[]
+
+  @@index([email])
+  @@index([googleId])
+}
+
+model PushSubscription {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoint   String   @unique
+  p256dh     String
+  auth       String
+  userAgent  String?
+  createdAt  DateTime @default(now())
+  lastSeenAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model UserSettings {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  defaultMicMuted     Boolean            @default(false)
+  defaultCameraOff    Boolean            @default(false)
+  defaultView         MeetingDefaultView @default(GALLERY)
+  enableJoinSound     Boolean            @default(true)
+  enableNotifications Boolean            @default(true)
+
+  showEmailToParticipants Boolean           @default(true)
+  allowDirectMessages     Boolean           @default(true)
+  profileVisibility       ProfileVisibility @default(PARTICIPANTS_ONLY)
+  shareUsageData          Boolean           @default(false)
+
+  accentColorOverride String?
+
+  composerMode ComposerMode @default(NORMAL)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum ComposerMode {
+  NORMAL
+  MARKDOWN
+  WYSIWYG
+}
+
+enum MeetingDefaultView {
+  GALLERY
+  SPEAKER
+}
+
+enum ProfileVisibility {
+  PUBLIC
+  PARTICIPANTS_ONLY
+  PRIVATE
+}

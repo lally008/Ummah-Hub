@@ -1,0 +1,34 @@
+{
+  "brand": {
+    "console": "অ্যাডমিন কনসোল",
+    "visit-open-meet": "Open Meet দেখুন"
+  },
+  "sections": {
+    "overview": "ওভারভিউ",
+    "manage": "ম্যানেজ",
+    "system": "সিস্টেম"
+  },
+  "items": {
+    "dashboard": "ড্যাশবোর্ড",
+    "analytics": "অ্যানালিটিক্স",
+    "users": "ব্যবহারকারী",
+    "groups": "গ্রুপ",
+    "meetings": "মিটিং",
+    "settings": "সেটিংস",
+    "administrators": "অ্যাডমিনিস্ট্রেটর",
+    "roles": "অ্যাডমিন রোল",
+    "user-roles": "ব্যবহারকারীর রোল",
+    "branding": "ব্র্যান্ডিং",
+    "configuration": "কনফিগারেশন",
+    "more": "আরও"
+  },
+  "topbar": {
+    "root": "অ্যাডমিন",
+    "dashboard": "ড্যাশবোর্ড",
+    "open-sidebar": "নেভিগেশন খুলুন",
+    "hide-sidebar": "নেভিগেশন লুকান",
+    "show-sidebar": "নেভিগেশন দেখান",
+    "my-account": "আমার প্রোফাইল",
+    "sign-out": "সাইন আউট"
+  }
+}

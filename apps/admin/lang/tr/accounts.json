@@ -1,0 +1,107 @@
+{
+  "eyebrow": "Ayarlar",
+  "title": "Yöneticiler",
+  "access-summary": "{count, plural, one {# kişinin} other {# kişinin}} bu konsola erişimi var.",
+  "subtitle": "Bu konsola kimin erişebileceğini yönetin.",
+  "invite-button": "Yönetici davet et",
+  "create-button": "Yönetici oluştur",
+  "empty": "Henüz yönetici yok.",
+  "roles": {
+    "admin": "yönetici",
+    "superadmin": "süper yönetici"
+  },
+  "table": {
+    "administrator": "Yönetici",
+    "role": "Rol",
+    "joined": "Katıldı",
+    "last-login": "Son giriş",
+    "never": "hiç",
+    "actions": "İşlemler",
+    "actions-for": "{name} için işlemler",
+    "edit": "Düzenle",
+    "delete": "Sil"
+  },
+  "delete-dialog": {
+    "title": "Bu yöneticiyi sil?",
+    "description": "{name} ({email}) yönetici konsoluna erişimini hemen kaybedecek. Bu işlem geri alınamaz.",
+    "cancel": "İptal",
+    "confirm": "Yöneticiyi sil",
+    "deleting": "Siliniyor…",
+    "success": "{name} silindi",
+    "error": "Yönetici silinemedi"
+  },
+  "invite-dialog": {
+    "title": "Yönetici davet et",
+    "description": "Güvenli bir bağlantıyı e-posta ile göndereceğiz. Hesabı etkinleştirmek için kendi şifrelerini belirleyecekler.",
+    "name": "Ad",
+    "email": "E-posta",
+    "role": "Rol",
+    "role-admin": "Yönetici",
+    "role-superadmin": "Süper yönetici",
+    "cancel": "İptal",
+    "submit": "Davet gönder",
+    "submitting": "Gönderiliyor…",
+    "success": "{email} adresine davet gönderildi",
+    "error": "Davet gönderilemedi",
+    "validation": {
+      "invalid-email": "Geçerli bir e-posta girin",
+      "name-required": "Ad gereklidir"
+    }
+  },
+  "create-dialog": {
+    "title": "Yönetici oluştur",
+    "description": "Hesabı doğrudan oluşturun ve bir şifre belirleyin. Hemen oturum açabilirler.",
+    "name": "Ad",
+    "email": "E-posta",
+    "password": "Şifre",
+    "password-placeholder": "En az 8 karakter",
+    "password-helper": "Bu şifreyi onlarla güvenli bir şekilde paylaşın.",
+    "confirm-password": "Şifreyi onayla",
+    "confirm-password-placeholder": "Şifreyi tekrar girin",
+    "role": "Rol",
+    "role-admin": "Yönetici",
+    "role-superadmin": "Süper yönetici",
+    "cancel": "İptal",
+    "submit": "Yönetici oluştur",
+    "submitting": "Oluşturuluyor…",
+    "success": "{name} oluşturuldu",
+    "error": "Yönetici oluşturulamadı",
+    "validation": {
+      "invalid-email": "Geçerli bir e-posta girin",
+      "name-required": "Ad gereklidir",
+      "password-min": "Şifre en az 8 karakter olmalıdır",
+      "password-mismatch": "Şifreler eşleşmiyor"
+    }
+  },
+  "edit-dialog": {
+    "title": "Yöneticiyi düzenle",
+    "name": "Ad",
+    "role": "Rol",
+    "role-admin": "Yönetici",
+    "role-superadmin": "Süper yönetici",
+    "cancel": "İptal",
+    "submit": "Değişiklikleri kaydet",
+    "submitting": "Kaydediliyor…",
+    "success": "{name} güncellendi",
+    "error": "Yönetici güncellenemedi",
+    "validation": {
+      "name-required": "Ad gereklidir"
+    }
+  },
+  "pending": {
+    "heading": "Bekleyen davetler",
+    "description": "Henüz kabul edilmemiş davetler. E-postayı yeniden gönderin veya erişimi iptal edin.",
+    "loading-error": "Davetler yüklenemedi.",
+    "empty": "Bekleyen davet yok.",
+    "status-pending": "bekliyor",
+    "status-expired": "süresi doldu",
+    "expires": "{when} tarihinde sona erer",
+    "expired-at": "{when} tarihinde sona erdi",
+    "resend-label": "{email} adresine daveti yeniden gönder",
+    "revoke-label": "{email} adresine gönderilen daveti iptal et",
+    "resend-success": "Davet {email} adresine yeniden gönderildi",
+    "resend-error": "Davet yeniden gönderilemedi",
+    "revoke-success": "{email} için davet iptal edildi",
+    "revoke-error": "Davet iptal edilemedi"
+  }
+}

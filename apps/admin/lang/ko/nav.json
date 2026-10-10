@@ -1,0 +1,34 @@
+{
+  "brand": {
+    "console": "관리자 콘솔",
+    "visit-open-meet": "Open Meet 방문"
+  },
+  "sections": {
+    "overview": "개요",
+    "manage": "관리",
+    "system": "시스템"
+  },
+  "items": {
+    "dashboard": "대시보드",
+    "analytics": "분석",
+    "users": "사용자",
+    "groups": "그룹",
+    "meetings": "회의",
+    "settings": "설정",
+    "administrators": "관리자",
+    "roles": "관리자 역할",
+    "user-roles": "사용자 역할",
+    "branding": "브랜딩",
+    "configuration": "구성",
+    "more": "더 보기"
+  },
+  "topbar": {
+    "root": "관리자",
+    "dashboard": "대시보드",
+    "open-sidebar": "내비게이션 열기",
+    "hide-sidebar": "내비게이션 숨기기",
+    "show-sidebar": "내비게이션 표시",
+    "my-account": "내 프로필",
+    "sign-out": "로그아웃"
+  }
+}

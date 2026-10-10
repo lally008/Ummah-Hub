@@ -1,0 +1,34 @@
+{
+  "brand": {
+    "console": "Konsol admin",
+    "visit-open-meet": "Kunjungi Open Meet"
+  },
+  "sections": {
+    "overview": "Ikhtisar",
+    "manage": "Kelola",
+    "system": "Sistem"
+  },
+  "items": {
+    "dashboard": "Dasbor",
+    "analytics": "Analitik",
+    "users": "Pengguna",
+    "groups": "Grup",
+    "meetings": "Rapat",
+    "settings": "Pengaturan",
+    "administrators": "Administrator",
+    "roles": "Peran admin",
+    "user-roles": "Peran pengguna",
+    "branding": "Merek",
+    "configuration": "Konfigurasi",
+    "more": "Lainnya"
+  },
+  "topbar": {
+    "root": "Admin",
+    "dashboard": "Dasbor",
+    "open-sidebar": "Buka navigasi",
+    "hide-sidebar": "Sembunyikan navigasi",
+    "show-sidebar": "Tampilkan navigasi",
+    "my-account": "Profil saya",
+    "sign-out": "Keluar"
+  }
+}

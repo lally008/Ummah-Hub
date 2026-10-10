@@ -1,0 +1,40 @@
+{
+  "menu": {
+    "profile": "Profile",
+    "profile-description": "Edit your account details",
+    "settings": "Settings",
+    "settings-description": "Defaults, privacy, language",
+    "sign-out": "Sign out"
+  },
+  "user-menu-label": "Open account menu",
+  "chat-link-label": "Open chat",
+  "activity-link-label": "Activity",
+  "saved-link-label": "Starred",
+  "search-placeholder": "Search",
+  "rail": {
+    "label": "Primary",
+    "chat": "Chat",
+    "meet": "Meet",
+    "activity": "Activity",
+    "saved": "Starred",
+    "history": "History",
+    "show": "Show sidebar",
+    "hide": "Hide sidebar",
+    "backdrop": "Close sidebar"
+  },
+  "command": {
+    "placeholder": "Type a command or meeting code…",
+    "no-results": "No results.",
+    "group-meetings": "Meetings",
+    "group-appearance": "Appearance",
+    "new-meeting": "New meeting",
+    "join": "Join “{code}”",
+    "switch-to-light": "Switch to light mode",
+    "switch-to-dark": "Switch to dark mode",
+    "match-system-theme": "Match system theme",
+    "home": "Home",
+    "sign-out": "Sign out",
+    "create-meeting-error": "Could not create meeting",
+    "join-code-required": "Type a meeting code first"
+  }
+}

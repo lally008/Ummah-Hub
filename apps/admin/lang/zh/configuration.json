@@ -1,0 +1,71 @@
+{
+  "eyebrow": "设置",
+  "title": "配置",
+  "description": "工作区默认值、品牌设置和会议策略。",
+  "coming-soon-label": "即将推出",
+  "coming-soon": {
+    "title": "配置功能即将上线",
+    "description": "工作区默认值、品牌设置和会议策略将很快在此处提供。"
+  },
+  "hub": {
+    "empty": "您还没有任何设置的访问权限。",
+    "sections": {
+      "access": {
+        "title": "访问",
+        "description": "管理可以登录控制台的人员及其权限范围。"
+      },
+      "users": {
+        "title": "用户",
+        "description": "管理应用的最终用户及其分配的角色。"
+      },
+      "workspace": {
+        "title": "工作区",
+        "description": "为控制台设置品牌，并配置工作区默认值。"
+      }
+    },
+    "cards": {
+      "administrators": {
+        "title": "管理员",
+        "description": "添加、编辑或删除可以登录控制台的管理员帐户。"
+      },
+      "roles": {
+        "title": "管理员角色",
+        "description": "定义每个管理员角色授予的权限。"
+      },
+      "users": {
+        "title": "用户",
+        "description": "管理最终用户帐户、邀请新用户并切换其访问权限。"
+      },
+      "user-roles": {
+        "title": "用户角色",
+        "description": "定义应用内每个用户角色授予的权限。"
+      },
+      "branding": {
+        "title": "品牌",
+        "description": "自定义应用名称、徽标和强调色。"
+      },
+      "configuration": {
+        "title": "配置",
+        "description": "工作区默认值、会议策略和功能开关。"
+      }
+    }
+  },
+  "form": {
+    "title": "工作区默认设置",
+    "subtitle": "应用于整个工作区中新会议的默认值。",
+    "default-title-label": "默认会议标题",
+    "default-title-help": "在创建会议时未命名时使用。",
+    "title-required": "请输入默认会议标题。",
+    "title-too-long": "标题不得超过 120 个字符。",
+    "allow-guests-label": "允许访客加入",
+    "allow-guests-help": "允许没有账户的人通过链接加入会议。",
+    "max-duration-label": "最长会议时长（分钟）",
+    "max-duration-placeholder": "无限制",
+    "max-duration-help": "留空表示无限制。介于 5 到 1440 分钟之间。",
+    "allow-guest-join-help": "Let people without an account join meetings via a link.",
+    "save": "保存更改",
+    "saving": "正在保存…",
+    "saved": "配置已保存",
+    "error": "无法保存配置"
+  }
+}

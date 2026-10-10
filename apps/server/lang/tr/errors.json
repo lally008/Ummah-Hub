@@ -1,0 +1,18 @@
+{
+  "email-taken": "Bu e-posta adresine sahip bir yönetici zaten mevcut",
+  "invite-invalid": "Bu davet bağlantısı geçersiz",
+  "invite-expired": "Bu davetin süresi dolmuş",
+  "invite-not-found": "Davet bulunamadı",
+  "admin-not-found": "Yönetici bulunamadı",
+  "name-required": "Ad gereklidir",
+  "name-empty": "Ad boş olamaz",
+  "cannot-demote-last-superadmin": "Son kalan süper yönetici düşürülemez",
+  "cannot-delete-self": "Kendi yönetici hesabınızı silemezsiniz",
+  "cannot-delete-last-superadmin": "Son kalan süper yönetici silinemez",
+  "permission-required": "Bu işlemi gerçekleştirme izniniz yok",
+  "role-not-found": "Rol bulunamadı",
+  "role-name-taken": "Bu adda bir rol zaten mevcut",
+  "role-is-system": "Sistem rolleri değiştirilemez veya silinemez",
+  "role-has-members": "Bu rolü silmeden önce roldeki her yöneticiyi yeniden atayın",
+  "role-permission-invalid": "Bir veya daha fazla izin anahtarı geçersiz"
+}

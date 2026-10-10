@@ -1,0 +1,114 @@
+name: openmeet
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: openmeet-postgres
+    restart: unless-stopped
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: openmeet
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d openmeet']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+
+  adminer:
+    image: adminer:latest
+    container_name: openmeet-adminer
+    restart: unless-stopped
+    ports:
+      - '127.0.0.1:8080:8080'
+
+  redis:
+    image: redis:7-alpine
+    container_name: openmeet-redis
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    command: ['redis-server', '--appendonly', 'yes']
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 3s
+
+  livekit:
+    image: livekit/livekit-server:latest
+    container_name: openmeet-livekit
+    restart: unless-stopped
+    ports:
+      - '7880:7880'
+      - '7881:7881'
+      - '7882:7882/udp'
+    volumes:
+      - ./docker/livekit.yaml:/etc/livekit.yaml:ro
+    command: ['--config', '/etc/livekit.yaml', '--dev', '--bind', '0.0.0.0']
+    environment:
+      LIVEKIT_KEYS: '${LIVEKIT_API_KEY:-devkey}: ${LIVEKIT_API_SECRET:?set LIVEKIT_API_SECRET in .env (run ./setup.sh)}'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'wget', '-qO-', 'http://localhost:7880/']
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 5s
+
+  livekit-egress:
+    image: livekit/egress:latest
+    container_name: openmeet-egress
+    restart: unless-stopped
+    volumes:
+      - ./apps/server/uploads:/out
+      - ./docker/egress.yaml:/etc/egress.yaml:ro
+    environment:
+      EGRESS_CONFIG_FILE: /etc/egress.yaml
+      LIVEKIT_API_KEY: ${LIVEKIT_API_KEY:-devkey}
+      LIVEKIT_API_SECRET: '${LIVEKIT_API_SECRET:?set LIVEKIT_API_SECRET in .env (run ./setup.sh)}'
+    depends_on:
+      redis:
+        condition: service_healthy
+      livekit:
+        condition: service_healthy
+    cap_add:
+      - SYS_ADMIN
+
+  coturn:
+    image: coturn/coturn:latest
+    container_name: openmeet-coturn
+    restart: unless-stopped
+    ports:
+      - '3478:3478/tcp'
+      - '3478:3478/udp'
+      - '5349:5349/tcp'
+      - '5349:5349/udp'
+      - '49160-49200:49160-49200/udp'
+    volumes:
+      - ./docker/coturn.conf:/etc/coturn/turnserver.conf:ro
+    command: ['-c', '/etc/coturn/turnserver.conf']
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: openmeet-mailhog
+    restart: unless-stopped
+    ports:
+      - '1025:1025'
+      - '8025:8025'
+
+volumes:
+  postgres_data:
+  redis_data:

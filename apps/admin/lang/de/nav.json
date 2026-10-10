@@ -1,0 +1,34 @@
+{
+  "brand": {
+    "console": "Admin-Konsole",
+    "visit-open-meet": "Open Meet besuchen"
+  },
+  "sections": {
+    "overview": "Übersicht",
+    "manage": "Verwalten",
+    "system": "System"
+  },
+  "items": {
+    "dashboard": "Dashboard",
+    "analytics": "Analysen",
+    "users": "Benutzer",
+    "groups": "Gruppen",
+    "meetings": "Besprechungen",
+    "settings": "Einstellungen",
+    "administrators": "Administratoren",
+    "roles": "Admin-Rollen",
+    "user-roles": "Benutzerrollen",
+    "branding": "Branding",
+    "configuration": "Konfiguration",
+    "more": "Mehr"
+  },
+  "topbar": {
+    "root": "Admin",
+    "dashboard": "Dashboard",
+    "open-sidebar": "Navigation öffnen",
+    "hide-sidebar": "Navigation ausblenden",
+    "show-sidebar": "Navigation einblenden",
+    "my-account": "Mein Profil",
+    "sign-out": "Abmelden"
+  }
+}

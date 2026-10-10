@@ -1,0 +1,18 @@
+{
+  "email-taken": "Un administrateur avec cet e-mail existe déjà",
+  "invite-invalid": "Ce lien d'invitation est invalide",
+  "invite-expired": "Cette invitation a expiré",
+  "invite-not-found": "Invitation introuvable",
+  "admin-not-found": "Administrateur introuvable",
+  "name-required": "Le nom est requis",
+  "name-empty": "Le nom ne peut pas être vide",
+  "cannot-demote-last-superadmin": "Impossible de rétrograder le dernier super-administrateur restant",
+  "cannot-delete-self": "Vous ne pouvez pas supprimer votre propre compte administrateur",
+  "cannot-delete-last-superadmin": "Impossible de supprimer le dernier super-administrateur restant",
+  "permission-required": "Vous n'avez pas l'autorisation d'effectuer cette action",
+  "role-not-found": "Rôle introuvable",
+  "role-name-taken": "Un rôle portant ce nom existe déjà",
+  "role-is-system": "Les rôles système ne peuvent pas être modifiés ni supprimés",
+  "role-has-members": "Réaffectez chaque administrateur de ce rôle avant de le supprimer",
+  "role-permission-invalid": "Une ou plusieurs clés d'autorisation ne sont pas valides"
+}

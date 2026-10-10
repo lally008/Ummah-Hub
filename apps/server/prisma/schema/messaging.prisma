@@ -1,0 +1,289 @@
+// Corporate chat (persistent, admin-governed). Separate from the meeting-scoped
+// `Message` model in chat.prisma - these conversations carry replies, edits,
+// soft-delete, reactions, polls, and per-member read state.
+
+enum ConversationType {
+  DIRECT
+  GROUP
+}
+
+enum ConversationMemberRole {
+  OWNER
+  MEMBER
+  ADMIN
+}
+
+enum ConversationOrigin {
+  USER_CREATED
+  ADMIN_CREATED
+  ADMIN_ON_BEHALF
+  SYSTEM_MANAGED
+  IMPORTED
+  AUTOMATION_CREATED
+  AI_CREATED
+}
+
+enum ActorType {
+  USER
+  ADMIN
+  SYSTEM
+  MIGRATION
+  AUTOMATION
+  AI
+}
+
+enum ConversationLifecycleStatus {
+  ACTIVE
+  ARCHIVED
+  DELETED
+}
+
+enum PresenceStatus {
+  AVAILABLE
+  BUSY
+  DND
+  BRB
+  AWAY
+  OFFLINE
+}
+
+enum ChatMessageType {
+  TEXT
+  POLL
+  SYSTEM
+}
+
+enum ChatMessagePriority {
+  NORMAL
+  IMPORTANT
+  URGENT
+}
+
+enum MentionKind {
+  USER
+  EVERYONE
+}
+
+model Conversation {
+  id                    String                      @id @default(cuid())
+  type                  ConversationType
+  title                 String? // null for DIRECT, set for GROUP
+  description           String? // GROUP description
+  avatarKey             String? // GROUP profile image storage key
+  origin                ConversationOrigin          @default(USER_CREATED)
+  createdByActorType    ActorType?
+  createdByUserId       String?
+  createdByUser         User?                       @relation("ConversationCreatedByUser", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdByAdminId      String? // Admin who created a GROUP; null for DIRECT
+  createdByAdmin        Admin?                      @relation("ConversationCreatedByAdmin", fields: [createdByAdminId], references: [id], onDelete: SetNull)
+  createdByDisplayName  String?
+  createdVia            String?
+  ownerUserId           String?
+  ownerUser             User?                       @relation("ConversationOwnedByUser", fields: [ownerUserId], references: [id], onDelete: SetNull)
+  status                ConversationLifecycleStatus @default(ACTIVE)
+  archivedAt            DateTime?
+  archivedByActorType   ActorType?
+  archivedByActorId     String?
+  deletedAt             DateTime?
+  deletedByActorType    ActorType?
+  deletedByActorId      String?
+  directKey             String?                     @unique // deterministic "minUserId:maxUserId" for DIRECT; null otherwise
+  lastMessageAt         DateTime?
+  createdAt             DateTime                    @default(now())
+  updatedAt             DateTime                    @updatedAt
+  members               ConversationMember[]
+  messages              ChatMessage[]
+  pinnedMessages        PinnedMessage[]
+  auditEvents           GroupAuditEvent[]
+
+  @@index([type])
+  @@index([origin])
+  @@index([status])
+  @@index([ownerUserId])
+  @@index([createdByUserId])
+  @@index([createdByAdminId])
+}
+
+model ConversationMember {
+  id                 String                 @id @default(cuid())
+  conversationId     String
+  conversation       Conversation           @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  userId             String
+  user               User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role               ConversationMemberRole @default(MEMBER)
+  lastReadAt         DateTime?
+  lastDeliveredAt    DateTime?
+  clearedAt          DateTime?
+  historyVisibleFrom DateTime?
+  removedAt          DateTime?
+  muted              Boolean                @default(false)
+  pinned             Boolean                @default(false)
+  hidden             Boolean                @default(false)
+  manualUnread       Boolean                @default(false)
+  joinedAt           DateTime               @default(now())
+
+  @@unique([conversationId, userId])
+  @@index([userId])
+  @@index([userId, removedAt])
+}
+
+model ChatMessage {
+  id             String              @id @default(cuid())
+  conversationId String
+  conversation   Conversation        @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  senderId       String?
+  sender         User?               @relation(fields: [senderId], references: [id], onDelete: SetNull)
+  type           ChatMessageType     @default(TEXT)
+  priority       ChatMessagePriority @default(NORMAL)
+  content        String
+  parentId       String?
+  parent         ChatMessage?        @relation("Replies", fields: [parentId], references: [id], onDelete: SetNull)
+  replies        ChatMessage[]       @relation("Replies")
+  replyCount     Int                 @default(0) // denormalized count of thread replies (channel roots)
+  lastReplyAt    DateTime?
+  editedAt       DateTime?
+  deletedAt      DateTime?
+  createdAt      DateTime            @default(now())
+  attachments    Attachment[]
+  reactions      MessageReaction[]
+  mentions       MessageMention[]
+  pins           PinnedMessage[]
+  saves          SavedMessage[]
+  poll           Poll?
+
+  @@index([conversationId, createdAt])
+  @@index([parentId])
+}
+
+model MessageMention {
+  id              String      @id @default(cuid())
+  messageId       String
+  message         ChatMessage @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  kind            MentionKind @default(USER)
+  mentionedUserId String? // null for CHANNEL / EVERYONE
+  mentionedUser   User?       @relation(fields: [mentionedUserId], references: [id], onDelete: Cascade)
+  createdAt       DateTime    @default(now())
+
+  @@index([messageId])
+  @@index([mentionedUserId])
+}
+
+model PinnedMessage {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  messageId      String
+  message        ChatMessage  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  pinnedById     String
+  pinnedBy       User         @relation(fields: [pinnedById], references: [id], onDelete: Cascade)
+  createdAt      DateTime     @default(now())
+
+  @@unique([messageId, pinnedById])
+  @@index([conversationId, pinnedById])
+}
+
+model SavedMessage {
+  id        String      @id @default(cuid())
+  userId    String
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messageId String
+  message   ChatMessage @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  createdAt DateTime    @default(now())
+
+  @@unique([userId, messageId])
+  @@index([userId, createdAt])
+}
+
+model MessageReaction {
+  id        String      @id @default(cuid())
+  messageId String
+  message   ChatMessage @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  emoji     String
+  createdAt DateTime    @default(now())
+
+  @@unique([messageId, userId, emoji])
+  @@index([messageId])
+}
+
+model Poll {
+  id        String       @id @default(cuid())
+  messageId String       @unique
+  message   ChatMessage  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  question  String
+  multiple  Boolean      @default(false)
+  closedAt  DateTime?
+  createdAt DateTime     @default(now())
+  options   PollOption[]
+}
+
+model PollOption {
+  id     String     @id @default(cuid())
+  pollId String
+  poll   Poll       @relation(fields: [pollId], references: [id], onDelete: Cascade)
+  text   String
+  order  Int
+  votes  PollVote[]
+
+  @@index([pollId])
+}
+
+model PollVote {
+  id           String     @id @default(cuid())
+  pollOptionId String
+  option       PollOption @relation(fields: [pollOptionId], references: [id], onDelete: Cascade)
+  pollId       String // denormalized so single-vote polls can sweep prior votes per (pollId, userId)
+  userId       String
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt    DateTime   @default(now())
+
+  @@unique([pollOptionId, userId])
+  @@index([pollId, userId])
+}
+
+// Manual presence override + custom status text. Online/offline is still
+// derived from socket connections; this layers the user's chosen status on top.
+model UserPresence {
+  id         String         @id @default(cuid())
+  userId     String         @unique
+  user       User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status     PresenceStatus @default(AVAILABLE)
+  customText String?
+  updatedAt  DateTime       @updatedAt
+}
+
+// Admin-issued invite for a brand-new user account (invite-only signup). The
+// User row is created only on accept, so an unverified half-account never exists.
+model UserInvite {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  name        String
+  tokenHash   String   @unique
+  expiresAt   DateTime
+  invitedById String?
+  invitedBy   Admin?   @relation(fields: [invitedById], references: [id], onDelete: SetNull)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([email])
+}
+
+model GroupAuditEvent {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  action         String
+  actorType      ActorType
+  actorUserId    String?
+  actorAdminId   String?
+  actorLabel     String?
+  targetUserId   String?
+  metadata       Json?
+  reason         String?
+  createdAt      DateTime     @default(now())
+
+  @@index([conversationId, createdAt])
+  @@index([actorType, createdAt])
+  @@index([action, createdAt])
+}

@@ -1,0 +1,58 @@
+{
+  "eyebrow": "设置",
+  "title": "品牌",
+  "description": "自定义您的工作区在各应用中的外观。",
+  "name": {
+    "title": "应用名称",
+    "description": "显示在页眉、登录界面和浏览器标签页中。",
+    "label": "名称",
+    "placeholder": "例如 Acme Meet"
+  },
+  "logo": {
+    "title": "标志",
+    "description": "显示在应用名称旁边。PNG、JPEG、WebP 或 GIF。",
+    "alt": "应用标志",
+    "upload": "上传标志",
+    "replace": "替换标志",
+    "remove": "移除",
+    "hint": "建议：方形图片，至少 64×64px，不超过 2MB。"
+  },
+  "accent": {
+    "title": "品牌色",
+    "description": "应用中按钮、链接和焦点环的颜色。",
+    "advanced": "使用自定义颜色",
+    "hex-picker": "取色器",
+    "hex-input": "十六进制值",
+    "apply-hex": "应用",
+    "preset": {
+      "indigo": "靛蓝",
+      "blue": "蓝",
+      "green": "绿",
+      "purple": "紫",
+      "rose": "玫红",
+      "amber": "琥珀",
+      "teal": "青绿"
+    }
+  },
+  "groups": {
+    "title": "用户创建的群组",
+    "description": "允许同事从会话列表中开启自己的群组聊天。",
+    "label": "允许用户创建群组",
+    "hint": "关闭时仅管理员可创建群组。"
+  },
+  "form": {
+    "name-required": "请输入应用名称。",
+    "name-too-long": "名称不得超过 60 个字符。",
+    "name-saved": "应用名称已更新",
+    "logo-saved": "标志已更新",
+    "logo-removed": "标志已移除",
+    "logo-invalid-type": "标志必须是 PNG、JPEG、WebP 或 GIF 图片。",
+    "logo-too-large": "标志必须为 2MB 或更小。",
+    "accent-saved": "品牌色已更新",
+    "groups-saved": "群组设置已更新",
+    "save": "保存",
+    "saving": "正在保存…",
+    "uploading": "正在上传…",
+    "error": "出现错误"
+  }
+}

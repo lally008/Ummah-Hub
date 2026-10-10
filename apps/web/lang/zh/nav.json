@@ -1,0 +1,40 @@
+{
+  "menu": {
+    "profile": "个人资料",
+    "profile-description": "编辑您的账户详情",
+    "settings": "设置",
+    "settings-description": "默认值、隐私和语言",
+    "sign-out": "退出登录"
+  },
+  "user-menu-label": "打开账户菜单",
+  "chat-link-label": "打开聊天",
+  "activity-link-label": "动态",
+  "saved-link-label": "已标星",
+  "search-placeholder": "搜索",
+  "rail": {
+    "label": "主要",
+    "chat": "聊天",
+    "meet": "会议",
+    "activity": "动态",
+    "saved": "已标星",
+    "history": "历史",
+    "show": "显示侧边栏",
+    "hide": "隐藏侧边栏",
+    "backdrop": "关闭侧边栏"
+  },
+  "command": {
+    "placeholder": "输入命令或会议码…",
+    "no-results": "无结果。",
+    "group-meetings": "会议",
+    "group-appearance": "外观",
+    "new-meeting": "新建会议",
+    "join": "加入 \"{code}\"",
+    "switch-to-light": "切换到浅色模式",
+    "switch-to-dark": "切换到深色模式",
+    "match-system-theme": "跟随系统主题",
+    "home": "首页",
+    "sign-out": "退出登录",
+    "create-meeting-error": "无法创建会议",
+    "join-code-required": "请先输入会议码"
+  }
+}

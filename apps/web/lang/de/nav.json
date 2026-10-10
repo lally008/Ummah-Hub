@@ -1,0 +1,40 @@
+{
+  "menu": {
+    "profile": "Profil",
+    "profile-description": "Ihre Kontodetails bearbeiten",
+    "settings": "Einstellungen",
+    "settings-description": "Standards, Datenschutz, Sprache",
+    "sign-out": "Abmelden"
+  },
+  "user-menu-label": "Kontomenü öffnen",
+  "chat-link-label": "Chat öffnen",
+  "activity-link-label": "Aktivität",
+  "saved-link-label": "Markiert",
+  "search-placeholder": "Suchen",
+  "rail": {
+    "label": "Primär",
+    "chat": "Chat",
+    "meet": "Meet",
+    "activity": "Aktivität",
+    "saved": "Markiert",
+    "history": "Verlauf",
+    "show": "Seitenleiste einblenden",
+    "hide": "Seitenleiste ausblenden",
+    "backdrop": "Seitenleiste schließen"
+  },
+  "command": {
+    "placeholder": "Befehl oder Besprechungscode eingeben…",
+    "no-results": "Keine Ergebnisse.",
+    "group-meetings": "Besprechungen",
+    "group-appearance": "Darstellung",
+    "new-meeting": "Neue Besprechung",
+    "join": "„{code}” beitreten",
+    "switch-to-light": "Zum hellen Modus wechseln",
+    "switch-to-dark": "Zum dunklen Modus wechseln",
+    "match-system-theme": "Systemdesign übernehmen",
+    "home": "Startseite",
+    "sign-out": "Abmelden",
+    "create-meeting-error": "Besprechung konnte nicht erstellt werden",
+    "join-code-required": "Zuerst einen Besprechungscode eingeben"
+  }
+}

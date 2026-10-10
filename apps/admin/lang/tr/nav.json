@@ -1,0 +1,34 @@
+{
+  "brand": {
+    "console": "Yönetici konsolu",
+    "visit-open-meet": "Open Meet'i ziyaret et"
+  },
+  "sections": {
+    "overview": "Genel bakış",
+    "manage": "Yönet",
+    "system": "Sistem"
+  },
+  "items": {
+    "dashboard": "Kontrol paneli",
+    "analytics": "Analitik",
+    "users": "Kullanıcılar",
+    "groups": "Gruplar",
+    "meetings": "Toplantılar",
+    "settings": "Ayarlar",
+    "administrators": "Yöneticiler",
+    "roles": "Yönetici rolleri",
+    "user-roles": "Kullanıcı rolleri",
+    "branding": "Marka",
+    "configuration": "Yapılandırma",
+    "more": "Daha fazla"
+  },
+  "topbar": {
+    "root": "Yönetici",
+    "dashboard": "Kontrol paneli",
+    "open-sidebar": "Gezinmeyi aç",
+    "hide-sidebar": "Gezinmeyi gizle",
+    "show-sidebar": "Gezinmeyi göster",
+    "my-account": "Profilim",
+    "sign-out": "Çıkış yap"
+  }
+}

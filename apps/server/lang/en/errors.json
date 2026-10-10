@@ -1,0 +1,18 @@
+{
+  "email-taken": "An admin with that email already exists",
+  "invite-invalid": "This invitation link is invalid",
+  "invite-expired": "This invitation has expired",
+  "invite-not-found": "Invite not found",
+  "admin-not-found": "Admin not found",
+  "name-required": "Name is required",
+  "name-empty": "Name cannot be empty",
+  "cannot-demote-last-superadmin": "Cannot demote the last remaining superadmin",
+  "cannot-delete-self": "You cannot delete your own admin account",
+  "cannot-delete-last-superadmin": "Cannot delete the last remaining superadmin",
+  "permission-required": "You do not have permission to perform this action",
+  "role-not-found": "Role not found",
+  "role-name-taken": "A role with that name already exists",
+  "role-is-system": "System roles cannot be modified or deleted",
+  "role-has-members": "Reassign every admin in this role before deleting it",
+  "role-permission-invalid": "One or more permission keys are not valid"
+}

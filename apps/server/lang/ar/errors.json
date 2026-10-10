@@ -1,0 +1,18 @@
+{
+  "email-taken": "يوجد مسؤول بهذا البريد الإلكتروني بالفعل",
+  "invite-invalid": "رابط الدعوة هذا غير صالح",
+  "invite-expired": "انتهت صلاحية هذه الدعوة",
+  "invite-not-found": "لم يتم العثور على الدعوة",
+  "admin-not-found": "لم يتم العثور على المسؤول",
+  "name-required": "الاسم مطلوب",
+  "name-empty": "لا يمكن أن يكون الاسم فارغًا",
+  "cannot-demote-last-superadmin": "لا يمكن تخفيض رتبة آخر مسؤول رئيسي متبقٍ",
+  "cannot-delete-self": "لا يمكنك حذف حساب المسؤول الخاص بك",
+  "cannot-delete-last-superadmin": "لا يمكن حذف آخر مسؤول رئيسي متبقٍ",
+  "permission-required": "ليس لديك الصلاحية لتنفيذ هذا الإجراء",
+  "role-not-found": "لم يتم العثور على الدور",
+  "role-name-taken": "يوجد دور بهذا الاسم بالفعل",
+  "role-is-system": "لا يمكن تعديل أو حذف الأدوار النظامية",
+  "role-has-members": "أعد تعيين كل مسؤول في هذا الدور قبل حذفه",
+  "role-permission-invalid": "مفتاح صلاحية واحد أو أكثر غير صالح"
+}
