@@ -27,11 +27,11 @@ async function bootstrap(): Promise<void> {
   const isProd = config.getOrThrow<string>('NODE_ENV') === 'production';
   const cookieSecret = config.getOrThrow<string>('JWT_ACCESS_SECRET');
 
-  await app.register(fastifyCookie, { secret: cookieSecret });
+  await app.register(fastifyCookie as any, { secret: cookieSecret });
 
   const uploadMaxSize = config.getOrThrow<number>('UPLOAD_MAX_SIZE_BYTES');
 
-  await app.register(fastifyMultipart, {
+  await app.register(fastifyMultipart as any, {
     limits: { fileSize: uploadMaxSize, files: 1 },
   });
 
